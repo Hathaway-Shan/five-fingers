@@ -30,7 +30,7 @@ create table chess_pieces (
 create table food (
   id bigint generated always as identity,
   name varchar not null,
-  cousine varchar not null
+  cuisine varchar not null
 );
 
 create table dogs (
@@ -65,7 +65,7 @@ values
 ('Queen', '9');
 
 insert into food (
-  name, cousine
+  name, cuisine
 )
 values
 ('Pizza', 'Italian'),

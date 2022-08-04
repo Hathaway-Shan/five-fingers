@@ -8,7 +8,7 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
   it('#get foods returns a list of foods', async () => {
-    const res = await request(app).get('/foods');
+    const res = await request(app).get('/food');
     expect(res.body.length).toEqual(3);
   });
   afterAll(() => {
