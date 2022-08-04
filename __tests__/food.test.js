@@ -12,11 +12,11 @@ describe('backend-express-template routes', () => {
     expect(res.body.length).toEqual(3);
   });
   it('#get foods by id returns first row', async () => {
-    const res = await request(app).get('/foods/1');
+    const res = await request(app).get('/food/1');
     const firstEntity = {
       id: '1',
       name: 'Pizza',
-      breed: 'Italian',
+      cuisine: 'Italian',
     };
     expect(res.body).toEqual(firstEntity);
   });
