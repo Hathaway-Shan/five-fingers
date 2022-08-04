@@ -52,7 +52,7 @@ insert into magic_cards (
   name, cmc
 )
 values
-('Lighting bolt', '1'),
+('Lighting Bolt', '1'),
 ('Serra Angel', '5'),
 ('Shivan Dragon', '6');
 

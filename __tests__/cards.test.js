@@ -11,6 +11,15 @@ describe('backend-express-template routes', () => {
     const res = await request(app).get('/magic_cards');
     expect(res.body.length).toEqual(3);
   });
+  it('#get magic_cards by id returns first row', async () => {
+    const res = await request(app).get('/magic_cards/1');
+    const firstEntity = {
+      id: '1',
+      name: 'Lighting Bolt',
+      cmc: '1',
+    };
+    expect(res.body).toEqual(firstEntity);
+  });
   afterAll(() => {
     pool.end();
   });
