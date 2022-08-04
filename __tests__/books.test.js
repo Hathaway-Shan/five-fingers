@@ -11,6 +11,15 @@ describe('backend-express-template routes', () => {
     const res = await request(app).get('/more_books');
     expect(res.body.length).toEqual(3);
   });
+  it('#get by id returns first value', async () => {
+    const res = await request(app).get('/more_books/1');
+    const firstEntity = {
+      id: '1',
+      title: 'Nightwatch',
+      author: 'Terry Pratchett',
+    };
+    expect(res.body).toEqual(firstEntity);
+  });
   afterAll(() => {
     pool.end();
   });
