@@ -37,6 +37,13 @@ describe('backend-express-template routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.name).toEqual('Lasagne');
   });
+  it('#delete /food/:id deletes a food', async () => {
+    const res = await request(app).delete('/food/1');
+    expect(res.status).toBe(200);
+
+    const bookResponse = await request(app).get('/food/1');
+    expect(bookResponse.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
