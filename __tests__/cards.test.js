@@ -39,6 +39,13 @@ describe('backend-express-template routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.name).toEqual('Shock');
   });
+  it('#delete /magic_cards/:id deletes a card', async () => {
+    const res = await request(app).delete('/magic_cards/1');
+    expect(res.status).toBe(200);
+
+    const bookResponse = await request(app).get('/magic_cards/1');
+    expect(bookResponse.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
