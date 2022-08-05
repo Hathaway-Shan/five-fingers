@@ -22,10 +22,9 @@ describe('backend-express-template routes', () => {
     expect(res.body).toEqual(firstEntity);
   });
   it('#post /more_books adds new book', async () => {
-    const res = await request(app).post('/more_books').send({
-      title: 'Soul Music',
-      author: 'Terry Pratchett',
-    });
+    const res = await request(app)
+      .post('/more_books')
+      .send({ title: 'Soul Music', author: 'Terry Pratchett' });
     expect(res.status).toBe(200);
     expect(res.body).toEqual({
       id: expect.any(String),
