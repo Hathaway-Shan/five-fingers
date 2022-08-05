@@ -22,13 +22,13 @@ describe('backend-express-template routes', () => {
   });
   it('#post /chess_pieces adds new piece', async () => {
     const res = await request(app).post('/chess_pieces').send({
-      name: 'Rook',
+      piece: 'Rook',
       points: '5',
     });
     expect(res.status).toBe(200);
     expect(res.body).toEqual({
       id: expect.any(String),
-      name: expect.any(String),
+      piece: expect.any(String),
       points: expect.any(String),
     });
   });
