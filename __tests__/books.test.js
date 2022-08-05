@@ -33,6 +33,13 @@ describe('backend-express-template routes', () => {
       author: expect.any(String),
     });
   });
+  it('#insert /more_books/:id updates a book', async () => {
+    const res = await request(app)
+      .put('/more_books/1')
+      .send({ title: 'The Fifth Elephant' });
+    expect(res.status).toBe(200);
+    expect(res.body.title).toEqual('The Fifth Elephant');
+  });
   afterAll(() => {
     pool.end();
   });
