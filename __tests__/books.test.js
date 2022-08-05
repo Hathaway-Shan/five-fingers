@@ -39,6 +39,13 @@ describe('backend-express-template routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.title).toEqual('The Fifth Elephant');
   });
+  it('#delete /more_books/:id deletes a book', async () => {
+    const res = await request(app).delete('/more_books/1');
+    expect(res.status).toBe(200);
+
+    const bookResponse = await request(app).get('/more_books/1');
+    expect(bookResponse.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
