@@ -20,6 +20,18 @@ describe('backend-express-template routes', () => {
     };
     expect(res.body).toEqual(firstEntity);
   });
+  it('#post /dogs adds new dog', async () => {
+    const res = await request(app).post('/dogs').send({
+      name: 'Buddy',
+      breed: 'Golden Retriever',
+    });
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      name: expect.any(String),
+      breed: expect.any(String),
+    });
+  });
   afterAll(() => {
     pool.end();
   });
