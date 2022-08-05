@@ -22,14 +22,14 @@ describe('backend-express-template routes', () => {
   });
   it('#post /magic_cards adds new card', async () => {
     const res = await request(app).post('/magic_cards').send({
-      title: 'Thalia, Guardian of Thraben',
-      author: 'Terry Pratchett',
+      name: 'Thalia, Guardian of Thraben',
+      cmc: '2',
     });
     expect(res.status).toBe(200);
     expect(res.body).toEqual({
       id: expect.any(String),
-      title: expect.any(String),
-      author: expect.any(String),
+      name: expect.any(String),
+      cmc: expect.any(String),
     });
   });
   afterAll(() => {
