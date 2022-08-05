@@ -32,6 +32,13 @@ describe('backend-express-template routes', () => {
       cmc: expect.any(String),
     });
   });
+  it('#insert /magic_cards/:id updates a card', async () => {
+    const res = await request(app)
+      .put('/magic_cards/1')
+      .send({ name: 'Shock' });
+    expect(res.status).toBe(200);
+    expect(res.body.title).toEqual('Shock');
+  });
   afterAll(() => {
     pool.end();
   });
