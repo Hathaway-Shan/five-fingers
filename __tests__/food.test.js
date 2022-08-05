@@ -32,6 +32,11 @@ describe('backend-express-template routes', () => {
       cuisine: expect.any(String),
     });
   });
+  it('#insert /food/:id updates a food', async () => {
+    const res = await request(app).put('/food/1').send({ name: 'Lasagne' });
+    expect(res.status).toBe(200);
+    expect(res.body.piece).toEqual('Lasagne');
+  });
   afterAll(() => {
     pool.end();
   });
