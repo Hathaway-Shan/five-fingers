@@ -39,6 +39,13 @@ describe('backend-express-template routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.piece).toEqual('Bishop');
   });
+  it('#delete /chess_pieces/:id deletes a piece', async () => {
+    const res = await request(app).delete('/chess_pieces/1');
+    expect(res.status).toBe(200);
+
+    const bookResponse = await request(app).get('/chess_pieces/1');
+    expect(bookResponse.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
