@@ -37,7 +37,7 @@ describe('backend-express-template routes', () => {
       .put('/magic_cards/1')
       .send({ name: 'Shock' });
     expect(res.status).toBe(200);
-    expect(res.body.title).toEqual('Shock');
+    expect(res.body.name).toEqual('Shock');
   });
   afterAll(() => {
     pool.end();
