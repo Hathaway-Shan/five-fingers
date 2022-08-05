@@ -32,6 +32,11 @@ describe('backend-express-template routes', () => {
       breed: expect.any(String),
     });
   });
+  it('#insert /dogs/:id updates a dog', async () => {
+    const res = await request(app).put('/dogs/1').send({ name: 'Sunshine' });
+    expect(res.status).toBe(200);
+    expect(res.body.name).toEqual('Sunshine');
+  });
   afterAll(() => {
     pool.end();
   });
