@@ -43,8 +43,8 @@ describe('backend-express-template routes', () => {
     const res = await request(app).delete('/magic_cards/1');
     expect(res.status).toBe(200);
 
-    const bookResponse = await request(app).get('/magic_cards/1');
-    expect(bookResponse.status).toBe(404);
+    const dataResponse = await request(app).get('/magic_cards/1');
+    expect(dataResponse.status).toBe(404);
   });
   afterAll(() => {
     pool.end();
