@@ -35,7 +35,7 @@ describe('backend-express-template routes', () => {
   it('#insert /food/:id updates a food', async () => {
     const res = await request(app).put('/food/1').send({ name: 'Lasagne' });
     expect(res.status).toBe(200);
-    expect(res.body.piece).toEqual('Lasagne');
+    expect(res.body.name).toEqual('Lasagne');
   });
   afterAll(() => {
     pool.end();
