@@ -20,6 +20,18 @@ describe('backend-express-template routes', () => {
     };
     expect(res.body).toEqual(firstEntity);
   });
+  it('#post /food adds new food', async () => {
+    const res = await request(app).post('/food').send({
+      name: 'Pho',
+      cuisine: 'Thai',
+    });
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      name: expect.any(String),
+      cuisine: expect.any(String),
+    });
+  });
   afterAll(() => {
     pool.end();
   });
