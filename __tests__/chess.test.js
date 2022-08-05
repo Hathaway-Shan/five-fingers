@@ -32,6 +32,13 @@ describe('backend-express-template routes', () => {
       points: expect.any(String),
     });
   });
+  it('#insert /chess_pieces/:id updates a piece', async () => {
+    const res = await request(app)
+      .put('/chess_pieces/1')
+      .send({ piece: 'Bishop' });
+    expect(res.status).toBe(200);
+    expect(res.body.piece).toEqual('Bishop');
+  });
   afterAll(() => {
     pool.end();
   });
