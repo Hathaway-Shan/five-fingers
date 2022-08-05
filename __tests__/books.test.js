@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
@@ -20,6 +21,19 @@ describe('backend-express-template routes', () => {
     };
     expect(res.body).toEqual(firstEntity);
   });
+  it('#post /more_books adds a new book'),
+    async () => {
+      const res = await request(app).send({
+        title: 'The Tempest',
+        author: 'William Shakespeare',
+      });
+      expect(res.body).toBe(200);
+      expect(res.body).toEqual({
+        id: expect.any(String),
+        title: expect.any(String),
+        author: expect.any(String),
+      });
+    };
   afterAll(() => {
     pool.end();
   });
