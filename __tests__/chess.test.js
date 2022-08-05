@@ -20,6 +20,18 @@ describe('backend-express-template routes', () => {
     };
     expect(res.body).toEqual(firstEntity);
   });
+  it('#post /chess_pieces adds new piece', async () => {
+    const res = await request(app).post('/chess_pieces').send({
+      name: 'Rook',
+      points: '5',
+    });
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      name: expect.any(String),
+      points: expect.any(String),
+    });
+  });
   afterAll(() => {
     pool.end();
   });
